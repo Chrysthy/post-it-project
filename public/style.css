@@ -92,3 +92,7 @@ button:disabled {
     }
 
 }
+
+#share-link .error, #content .error {
+    color: hsl(0, 100%, 50%);
+}
