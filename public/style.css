@@ -54,7 +54,7 @@ body {
 }
 
 [contenteditable]:empty::before {
-    content: "Digite sua anotação aqui...";
+    content: "Type your note here...";
     color: hsl(0, 0%, 40%);
 }
 
