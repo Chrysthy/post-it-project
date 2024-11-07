@@ -13,3 +13,11 @@ db.serialize(() => {
     )`);
 
 });
+
+const saveNote = (id, content) => new Promise((resolve, reject) => {
+    db.run(`
+
+        INSERT INTO notes (id, content) VALUES (?, ?)
+                
+    `, [id, content], (err) => err ? reject(err) : resolve())
+})
