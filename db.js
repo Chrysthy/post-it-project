@@ -21,3 +21,34 @@ const saveNote = (id, content) => new Promise((resolve, reject) => {
                 
     `, [id, content], (err) => err ? reject(err) : resolve())
 })
+
+const getNotes = (id) => new Promise((resolve, reject) =>
+
+    db.get(`
+        
+        SELECT * FROM notes WHERE id = ?
+    `, [id], (err, row) => err ? reject(err) : resolve(row))
+
+)
+
+const markNoteAsOpened = (id) => new Promise((resolve, reject) =>
+
+    db.run(` 
+        UPDATE notes SET opened_at = datetime('now', 'localtime') WHERE id = ?
+    `, [id], (err) => err ? reject(err) : resolve())
+
+)
+
+const deleteExpiredNotes = () => new Promise((resolve, reject) =>
+
+    db.run(`
+        DELETE FROM notes 
+        WHERE opened_at < datetime('now', 'localtime', '-5 minutes')
+        OR opened_at IS NULL AND created_at < datetime('now', 'localtime', '-2 days')
+    `, (err) => err ? reject(err) : resolve())
+
+)
+
+module.exports = {
+    saveNote
+}
