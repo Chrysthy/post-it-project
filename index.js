@@ -1,5 +1,5 @@
 const express = require('express');
-const { saveNote, getNote, deleteExpiredNotes, markNoteAsOpened  } = require('./db');
+const { saveNote, getNote, deleteExpiredNotes, markNoteAsOpened } = require('./db');
 const app = express();
 
 app.use(express.static('public'));
@@ -44,7 +44,18 @@ app.get('/share/:id', async (req, res) => {
 
     const note = await getNote(id);
 
-})
+    if (!note) {
+
+        return res.send('<span class="error"> Note not found </span>')
+    }
+
+    if (!note.opened_at) {
+        await markNoteAsOpened(id);
+    }
+
+    res.send(note.content);
+    
+});
 
 
 const PORT = 3000; app.listen(PORT, () => {
