@@ -57,7 +57,16 @@ const markNoteAsOpened = (id) => new Promise((resolve, reject) =>
 
 )
 
+const deleteExpiredNotes = () => new Promise((resolve, reject) =>
+
+    db.run(`
+        DELETE FROM notes 
+        WHERE opened_at < datetime('now', 'localtime', '-5 minutes')
+        OR opened_at IS NULL AND created_at < datetime('now', 'localtime', '-2 days')
+    `, (err) => err ? reject(err) : resolve())
+    
+)
 
 module.exports = {
-        saveNotes
-    }
+    saveNotes
+}
