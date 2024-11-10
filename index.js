@@ -6,14 +6,14 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'index.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.get('/note/:id', (req, res) => {
     res.sendFile(__dirname + '/public/note.html');
 })
 
-app.post('/note', async (req, res) => {
+app.post('/notes', async (req, res) => {
     const { content } = req.body;
 
     if (!content) {
@@ -29,7 +29,7 @@ app.post('/note', async (req, res) => {
 
             <br>
 
-            <span>${req.headers.origin}/note/${id}}</span>
+            <span>${req.headers.origin}/note/${id}</span>
 
         </p>`);
 
@@ -58,6 +58,7 @@ app.get('/share/:id', async (req, res) => {
 });
 
 
-const PORT = 3000; app.listen(PORT, () => {
+const PORT = 3000;
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
