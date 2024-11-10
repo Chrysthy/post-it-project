@@ -1,5 +1,5 @@
 const express = require('express');
-const { saveNotes } = require('./db');
+const { saveNote, getNote, deleteExpiredNotes, markNoteAsOpened  } = require('./db');
 const app = express();
 
 app.use(express.static('public'));
@@ -21,7 +21,7 @@ app.post('/note', async (req, res) => {
     }
 
     const id = crypto.randomUUID();
-    await saveNotes(id, content);
+    await saveNote(id, content);
 
     res.send(`
         
@@ -40,40 +40,13 @@ app.get('/share/:id', async (req, res) => {
 
     await deleteExpiredNotes();
 
+    const { id } = req.params;
+
+    const note = await getNote(id);
+
 })
 
 
 const PORT = 3000; app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-const getNotes = (id) => new Promise((resolve, reject) =>
-
-    db.get(`
-        
-        SELECT * FROM notes WHERE id = ?
-    `, [id], (err, row) => err ? reject(err) : resolve(row))
-
-)
-
-const markNoteAsOpened = (id) => new Promise((resolve, reject) =>
-
-    db.run(` 
-        UPDATE notes SET opened_at = datetime('now', 'localtime') WHERE id = ?
-    `, [id], (err) => err ? reject(err) : resolve())
-
-)
-
-const deleteExpiredNotes = () => new Promise((resolve, reject) =>
-
-    db.run(`
-        DELETE FROM notes 
-        WHERE opened_at < datetime('now', 'localtime', '-5 minutes')
-        OR opened_at IS NULL AND created_at < datetime('now', 'localtime', '-2 days')
-    `, (err) => err ? reject(err) : resolve())
-
-)
-
-module.exports = {
-    saveNotes
-}
