@@ -27,7 +27,12 @@
     </div>
 
 
-  
+    <script>
+
+        const noteId = location.pathname.split('/').pop();
+        document.querySelector('.stick-note').setAttribute('hx-get', `/share/${noteId}`);
+
+    </script>
 
 
 </body>
