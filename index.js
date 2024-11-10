@@ -17,7 +17,7 @@ app.post('/note', async (req, res) => {
     const { content } = req.body;
 
     if (!content) {
-        return res.send('<span> Erro inesperado</span>')
+        return res.send('<span class="error"> Unexpected error</span>')
     }
 
     const id = crypto.randomUUID();
