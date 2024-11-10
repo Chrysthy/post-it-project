@@ -19,9 +19,9 @@
 
         <button 
         disabled="true"
-        id="shareButton"
-        hx-post="/notes" 
+        id="shareButton"       
         hx-trigger="click" 
+        hx-post="/notes" 
         hx-target="#share-link"
         hx-on:htmx:config-request="event.detail.parameters.content = content.innerHTML" 
         hx-on:htmx:after-request="{
