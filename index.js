@@ -40,6 +40,17 @@ const PORT = 3000; app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
+const getNotes = (id) => new Promise((resolve, reject) =>
+
+    db.get(`
+        
+        SELECT * FROM notes WHERE id = ?
+    `, [id], (err, row) => err ? reject(err) : resolve(row))
+
+)
+
+
+
 module.exports = {
     saveNotes
 }
