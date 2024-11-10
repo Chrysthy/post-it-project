@@ -36,6 +36,13 @@ app.post('/note', async (req, res) => {
 
 });
 
+app.get('/share/:id', async (req, res) => {
+
+    await deleteExpiredNotes();
+
+})
+
+
 const PORT = 3000; app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
@@ -64,7 +71,7 @@ const deleteExpiredNotes = () => new Promise((resolve, reject) =>
         WHERE opened_at < datetime('now', 'localtime', '-5 minutes')
         OR opened_at IS NULL AND created_at < datetime('now', 'localtime', '-2 days')
     `, (err) => err ? reject(err) : resolve())
-    
+
 )
 
 module.exports = {
