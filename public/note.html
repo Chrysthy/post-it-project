@@ -13,14 +13,22 @@
 
 <body>
 
-    <div class="sticky-note">
+    <div 
+        hx-trigger="load" 
+        hx-get="/share/{id}" 
+        hx-target="#content" 
+        class="sticky-note">
 
-        <div class="content">
+        <div id="content" class="content">
 
             Shared note
         </div>
 
     </div>
+
+
+  
+
 
 </body>
 
