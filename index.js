@@ -1,4 +1,5 @@
 const express = require('express');
+const { saveNotes } = require('./db');
 const app = express();
 
 app.use(express.static('public'));
@@ -38,3 +39,7 @@ app.post('/note', async (req, res) => {
 const PORT = 3000; app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = {
+    saveNotes
+}
