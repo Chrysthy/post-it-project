@@ -49,8 +49,15 @@ const getNotes = (id) => new Promise((resolve, reject) =>
 
 )
 
+const markNoteAsOpened = (id) => new Promise((resolve, reject) =>
+
+    db.run(` 
+        UPDATE notes SET opened_at = datetime('now', 'localtime') WHERE id = ?
+    `, [id], (err) => err ? reject(err) : resolve())
+
+)
 
 
 module.exports = {
-    saveNotes
-}
+        saveNotes
+    }
