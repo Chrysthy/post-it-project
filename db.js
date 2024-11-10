@@ -22,7 +22,7 @@ const saveNote = (id, content) => new Promise((resolve, reject) => {
     `, [id, content], (err) => err ? reject(err) : resolve())
 })
 
-const getNotes = (id) => new Promise((resolve, reject) =>
+const getNote = (id) => new Promise((resolve, reject) =>
 
     db.get(`
         
@@ -50,5 +50,8 @@ const deleteExpiredNotes = () => new Promise((resolve, reject) =>
 )
 
 module.exports = {
-    saveNote
+    saveNote,
+    getNote,
+    markNoteAsOpened,
+    deleteExpiredNotes
 }
