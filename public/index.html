@@ -15,9 +15,20 @@
 
     <div class="sticky-note">
 
-        <div class="content" contenteditable="true"></div>
+        <div id="content" class="content" contenteditable="true" oninput="document.getElementById('shareButton').disabled = !this.textContent.trim()"></div>
 
-        <button>Share</button>
+        <button 
+        disabled="true"
+        id="shareButton"
+        hx-post="/notes" 
+        hx-trigger="click" 
+        hx-target="#share-link"
+        hx-on:htmx:config-request="event.detail.parameters.content = content.innerHTML" 
+        hx-on:htmx:after-request="{
+            document.getElementById('shareButton').disabled = true;
+            document.getElementById('content').innerHTML = '';
+
+        }">Share</button>
 
     </div>
 
