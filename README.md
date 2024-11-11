@@ -28,10 +28,7 @@
 - CSS
 - HTML
 - pnpm
-- Node.js
 - Express
-- SQLite3
-- JSON
 - HTMX
 
 <br>
@@ -45,5 +42,11 @@
 - [X] Backend integration with Node.js and Expres
 - [X] Data storage with SQLite3
 
+<br>
+
+## 💻 Project
+
+- The website was created to practice HTML, CSS, HTMX, JavaScript, SQLite3, express skills.
 
 <br>
+
