@@ -42,6 +42,8 @@
 - [X] Share through a link
 - [X] The notes will delete automatically 5 minutes after being opened
 - [X] The notes will expire in 2 days if not opened
+- [X] Backend integration with Node.js and Expres
+- [X] Data storage with SQLite3
 
 
 <br>
