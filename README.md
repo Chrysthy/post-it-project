@@ -21,3 +21,15 @@
 </p>
 
 <br>
+
+## 🛠 Technologies
+
+- JavaScript
+- CSS
+- HTML
+- pnpm
+- Node.js
+- Express
+- SQLite3
+- JSON
+- htmx
