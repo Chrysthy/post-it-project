@@ -32,4 +32,16 @@
 - Express
 - SQLite3
 - JSON
-- htmx
+- HTMX
+
+<br>
+
+## ✨ Features
+
+- [X] Create sticky notes
+- [X] Share through a link
+- [X] The notes will delete automatically 5 minutes after being opened
+- [X] The notes will expire in 2 days if not opened
+
+
+<br>
