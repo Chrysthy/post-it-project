@@ -28,6 +28,7 @@
 - CSS
 - HTML
 - pnpm
+- Node
 - Express
 - HTMX
 
@@ -46,7 +47,14 @@
 
 ## 💻 Project
 
-- The website was created to practice HTML, CSS, HTMX, JavaScript, SQLite3, express skills.
+- The website was created to practice HTML, CSS, HTMX, JavaScript, Node, SQLite3, express skills.
 
 <br>
 
+## ⚙ How to Run
+
+- You need to have <kbd>[NodeJS](https://nodejs.org/en/download/)</kbd> installed on your machine.
+- Clone the project.
+
+
+<br>
