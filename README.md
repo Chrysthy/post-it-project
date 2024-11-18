@@ -60,8 +60,8 @@
 
 - You need to have <kbd>[NodeJS](https://nodejs.org/en/download/)</kbd> installed on your machine.
 - Clone the project.
-- Install pnpm globally <kbd>npm install -g pnpm </kbd>
 - Initialize the project <kbd>pnpm init -y</kbd>.
+- Install pnpm globally <kbd>npm install -g pnpm </kbd>
 - Install <kbd>pnpm install express sqlite3</kbd> dependencies.
 - Run the program <kbd>pnpm run dev</kbd>
 
